@@ -12,7 +12,8 @@ function getComputerChoice() {
   }
 }
 
-function playRound(computerChoice, userChoice) {
+function playRound(computerChoice) {
+  let userChoice = prompt("What's your choice? Rock/Paper/Scissors").toLowerCase()
   let userChoiceUpper = userChoice.charAt(0).toUpperCase() + userChoice.slice(1)
   switch (computerChoice) {
     case "Rock":
@@ -53,6 +54,13 @@ function playRound(computerChoice, userChoice) {
   }
 }
 
-let userChoice = prompt("What's your choice? Rock/Paper/Scissors").toLowerCase()
+function game(func) {
+  for(let i = 0; i <= 4; i++ ) {
+    console.log(func())
+  }
+}
 
-playRound(getComputerChoice(), userChoice)
+
+
+game(() => playRound(getComputerChoice()));
+
