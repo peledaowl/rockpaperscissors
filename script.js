@@ -26,6 +26,9 @@ function playRound(computerChoice, userChoice) {
         case 'scissors':
           console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`)
           break;
+        default:
+          console.log("Please enter valid value.")
+          break;
       }
       break;
     case "Paper":
@@ -39,6 +42,9 @@ function playRound(computerChoice, userChoice) {
         case 'rock':
           console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`)
           break;
+        default:
+          console.log("Please enter valid value.")
+          break;
       }
       break;
     case "Scissors":
@@ -51,6 +57,9 @@ function playRound(computerChoice, userChoice) {
           break;
         case 'paper':
           console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`)
+          break;
+        default:
+          console.log("Please enter valid value.")
           break;
       }
       break;
