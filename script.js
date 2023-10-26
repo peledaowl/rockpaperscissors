@@ -2,67 +2,54 @@
 
 function getComputerChoice() {
   let computerChoice = Math.floor(Math.random() * (3 - 1 + 1) + 1)
-  switch(computerChoice) {
+  switch (computerChoice) {
     case 1:
       return "Rock"
     case 2:
       return 'Paper'
     case 3:
       return "Scissors"
-    }
+  }
 }
 
 function playRound(computerChoice, userChoice) {
   let userChoiceUpper = userChoice.charAt(0).toUpperCase() + userChoice.slice(1)
-  switch(computerChoice) {
+  switch (computerChoice) {
     case "Rock":
       switch (userChoice) {
         case 'rock':
-          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a draw!`)
-          break;
+          return (`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a draw!`)
         case 'paper':
-          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a win!`)
-          break;
+          return (`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a win!`)
         case 'scissors':
-          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`)
-          break;
+          return (`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`)
         default:
-          console.log("Please enter valid value.")
-          break;
+          return ("Please enter valid value.")
       }
-      break;
+
     case "Paper":
       switch (userChoice) {
         case 'paper':
-          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a draw!`)
-          break;
+          return (`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a draw!`)
         case 'scissors':
-          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a win!`)
-          break;
+          return (`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a win!`)
         case 'rock':
-          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`)
-          break;
+          return (`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`)
         default:
-          console.log("Please enter valid value.")
-          break;
+          return ("Please enter valid value.")
       }
-      break;
+
     case "Scissors":
       switch (userChoice) {
         case 'scissors':
-          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a draw!`)
-          break;
+          return (`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a draw!`)
         case 'rock':
-          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a win!`)
-          break;
+          return (`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a win!`)
         case 'paper':
-          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`)
-          break;
+          return (`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`)
         default:
-          console.log("Please enter valid value.")
-          break;
+          return ("Please enter valid value.")
       }
-      break;
   }
 }
 
