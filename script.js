@@ -1,7 +1,19 @@
 
 let userChoice = prompt("What's your choice? Rock/Paper/Scissors").toLowerCase()
 
-let computerChoice = Math.floor(Math.random() * (3 - 1 + 1) + 1)
+
+
+function getComputerChoice() {
+  let computerChoice = Math.floor(Math.random() * (3 - 1 + 1) + 1)
+  switch(computerChoice) {
+    case 1:
+      return "Rock"
+    case 2:
+      return 'Paper'
+    case 3:
+      return "Scissors"
+    }
+}
 
 switch(computerChoice) {
   case 1:
