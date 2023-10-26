@@ -1,7 +1,4 @@
 
-let userChoice = prompt("What's your choice? Rock/Paper/Scissors").toLowerCase()
-
-
 
 function getComputerChoice() {
   let computerChoice = Math.floor(Math.random() * (3 - 1 + 1) + 1)
@@ -15,44 +12,51 @@ function getComputerChoice() {
     }
 }
 
-switch(computerChoice) {
-  case 1:
-    switch (userChoice) {
-      case 'rock':
-        console.log(`User: ${userChoice}\nComputer: Rock\nIt's a draw!`)
-        break;
-      case 'paper':
-        console.log(`User: ${userChoice}\nComputer: Rock\nIt's a win!`)
-        break;
-      case 'scissors':
-        console.log(`User: ${userChoice}\nComputer: Rock\nIt's a loss!`)
-        break;
-    }
-    break;
-  case 2:
-    switch (userChoice) {
-      case 'paper':
-        console.log(`User: ${userChoice}\nComputer: Paper\nIt's a draw!`)
-        break;
-      case 'scissors':
-        console.log(`User: ${userChoice}\nComputer: Paper\nIt's a win!`)
-        break;
-      case 'rock':
-        console.log(`User: ${userChoice}\nComputer: Paper\nIt's a loss!`)
-        break;
-    }
-    break;
-  case 3:
-    switch (userChoice) {
-      case 'scissors':
-        console.log(`User: ${userChoice}\nComputer: Scissors\nIt's a draw!`)
-        break;
-      case 'rock':
-        console.log(`User: ${userChoice}\nComputer: Scissors\nIt's a win!`)
-        break;
-      case 'paper':
-        console.log(`User: ${userChoice}\nComputer: Scissors\nIt's a loss!`)
-        break;
-    }
-    break;
+function playRound(computerChoice, userChoice) {
+  let userChoiceUpper = userChoice.charAt(0).toUpperCase() + userChoice.slice(1)
+  switch(computerChoice) {
+    case "Rock":
+      switch (userChoice) {
+        case 'rock':
+          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a draw!`)
+          break;
+        case 'paper':
+          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a win!`)
+          break;
+        case 'scissors':
+          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`)
+          break;
+      }
+      break;
+    case "Paper":
+      switch (userChoice) {
+        case 'paper':
+          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a draw!`)
+          break;
+        case 'scissors':
+          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a win!`)
+          break;
+        case 'rock':
+          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`)
+          break;
+      }
+      break;
+    case "Scissors":
+      switch (userChoice) {
+        case 'scissors':
+          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a draw!`)
+          break;
+        case 'rock':
+          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a win!`)
+          break;
+        case 'paper':
+          console.log(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`)
+          break;
+      }
+      break;
+  }
 }
+
+let userChoice = prompt("What's your choice? Rock/Paper/Scissors").toLowerCase()
+
+playRound(getComputerChoice(), userChoice)
