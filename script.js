@@ -12,52 +12,84 @@ function getComputerChoice() {
   }
 }
 
-function playRound(computerChoice, ) {
-  let userChoice = prompt("What's your choice? Rock/Paper/Scissors").toLowerCase() // Getting user input in lowercase
-  let userChoiceUpper = userChoice.charAt(0).toUpperCase() + userChoice.slice(1) // Making user input capitalized
+function playRound(userChoice, computerChoice) {
   switch (computerChoice) { // Using two switches to compare computer choice and user choice. 
     case "Rock": // First the computer choice is taken and compared to user choice.
       switch (userChoice) {
-        case 'rock':
-          return [(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a draw!`), 'draw']
-        case 'paper':
-          return [(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a win!`), 'win']
-        case 'scissors':
-          return [(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`), 'loss']
+        case 'Rock':
+          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a draw!`), 'draw']
+        case 'Paper':
+          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a win!`), 'win']
+        case 'Scissors':
+          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a loss!`), 'loss']
         default:
           return ("Please enter valid value.") // This is output if user input is neither rock, paper or scissors
       }
 
     case "Paper":
       switch (userChoice) {
-        case 'paper':
-          return [(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a draw!`), 'draw']
-        case 'scissors':
-          return [(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a win!`), 'win']
-        case 'rock':
-          return [(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`), 'loss']
+        case 'Paper':
+          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a draw!`), 'draw']
+        case 'Scissors':
+          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a win!`), 'win']
+        case 'Rock':
+          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a loss!`), 'loss']
         default:
           return ("Please enter valid value.")
       }
 
     case "Scissors":
       switch (userChoice) {
-        case 'scissors':
-          return [(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a draw!`), 'draw']
-        case 'rock':
-          return [(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a win!`), 'win']
-        case 'paper':
-          return [(`User: ${userChoiceUpper}\nComputer: ${computerChoice}\nIt's a loss!`), 'loss']
+        case 'Scissors':
+          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a draw!`), 'draw']
+        case 'Rock':
+          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a win!`), 'win']
+        case 'Paper':
+          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a loss!`), 'loss']
         default:
           return ("Please enter valid value.")
       }
   }
 }
 
+const btnRock = document.querySelector('.btnRock')
+const btnPaper = document.querySelector('.btnPaper')
+const btnScissors = document.querySelector('.btnScissors')
+
+btnRock.addEventListener('click', () => {
+  const result = playRound('Rock', getComputerChoice());
+  
+  const container = document.querySelector('.container')
+  const roundResult = document.createElement('p')
+  roundResult.textContent = result[0]
+  container.appendChild(roundResult)
+});
+
+btnPaper.addEventListener('click', () => {
+  const result = playRound('Paper', getComputerChoice());
+  
+  const container = document.querySelector('.container')
+  const roundResult = document.createElement('p')
+  roundResult.textContent = result[0]
+  container.appendChild(roundResult)
+});
+
+btnScissors.addEventListener('click', () => {
+  const result = playRound('Scissors', getComputerChoice());
+  
+  const container = document.querySelector('.container')
+  const roundResult = document.createElement('p')
+  roundResult.textContent = result[0]
+  container.appendChild(roundResult)
+});
+
+
+
+/*
 function game(func) {
   let userScore = 0
   let computerScore = 0
-  for(let i = 0; i <= 4; i++ ) { // Repeating the playRound function five times
+  for (let i = 0; i <= 4; i++) { // Repeating the playRound function five times
     let funcCall = func() // Assign the result of the function to a variable
     if (funcCall[1] == 'win') { // If the result of the function is a win,
       userScore++; // Add to the user score,
@@ -81,7 +113,7 @@ function game(func) {
     console.log(`The final score: \nUser: ${userScore}\nComputer: ${computerScore}\nThe game is draw.`)
   }
 }
+*/
 
 
-game(() => playRound(getComputerChoice()));
 
