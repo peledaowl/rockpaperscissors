@@ -22,8 +22,6 @@ function playRound(userChoice, computerChoice) {
           return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a win!`), 'win']
         case 'Scissors':
           return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a loss!`), 'loss']
-        default:
-          return ("Please enter valid value.") // This is output if user input is neither rock, paper or scissors
       }
 
     case "Paper":
@@ -34,8 +32,6 @@ function playRound(userChoice, computerChoice) {
           return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a win!`), 'win']
         case 'Rock':
           return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a loss!`), 'loss']
-        default:
-          return ("Please enter valid value.")
       }
 
     case "Scissors":
@@ -46,8 +42,6 @@ function playRound(userChoice, computerChoice) {
           return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a win!`), 'win']
         case 'Paper':
           return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a loss!`), 'loss']
-        default:
-          return ("Please enter valid value.")
       }
   }
 }
@@ -56,31 +50,49 @@ const btnRock = document.querySelector('.btnRock')
 const btnPaper = document.querySelector('.btnPaper')
 const btnScissors = document.querySelector('.btnScissors')
 
+let userScore = 0
+let computerScore = 0
+
+const container = document.querySelector('.container')
+const roundResult = document.createElement('p')
+const scoreResult = document.createElement('p')
+
 btnRock.addEventListener('click', () => {
   const result = playRound('Rock', getComputerChoice());
-  
-  const container = document.querySelector('.container')
-  const roundResult = document.createElement('p')
+
+  if (result[1] == 'win'){ userScore++ }
+  else if (result[1] == 'loss'){ computerScore++ }
+
+  scoreResult.textContent = `User score: ${userScore}, Computer score: ${computerScore}`
   roundResult.textContent = result[0]
   container.appendChild(roundResult)
+  container.appendChild(scoreResult)
 });
+
 
 btnPaper.addEventListener('click', () => {
   const result = playRound('Paper', getComputerChoice());
-  
-  const container = document.querySelector('.container')
-  const roundResult = document.createElement('p')
+
+  if (result[1] == 'win'){ userScore++ }
+  else if (result[1] == 'loss'){ computerScore++ }
+  scoreResult.textContent = `User score: ${userScore}, Computer score: ${computerScore}`
   roundResult.textContent = result[0]
   container.appendChild(roundResult)
+  container.appendChild(scoreResult)
 });
+
 
 btnScissors.addEventListener('click', () => {
   const result = playRound('Scissors', getComputerChoice());
+
+  if (result[1] == 'win'){ userScore++ }
+  else if (result[1] == 'loss'){ computerScore++ }
   
-  const container = document.querySelector('.container')
-  const roundResult = document.createElement('p')
+
+  scoreResult.textContent = `User score: ${userScore}, Computer score: ${computerScore}`
   roundResult.textContent = result[0]
   container.appendChild(roundResult)
+  container.appendChild(scoreResult)
 });
 
 
