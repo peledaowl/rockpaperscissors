@@ -13,37 +13,16 @@ function getComputerChoice() {
 }
 
 function playRound(userChoice, computerChoice) {
-  switch (computerChoice) { // Using two switches to compare computer choice and user choice. 
-    case "Rock": // First the computer choice is taken and compared to user choice.
-      switch (userChoice) {
-        case 'Rock':
-          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a draw!`), 'draw']
-        case 'Paper':
-          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a win!`), 'win']
-        case 'Scissors':
-          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a loss!`), 'loss']
-      }
-
-    case "Paper":
-      switch (userChoice) {
-        case 'Paper':
-          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a draw!`), 'draw']
-        case 'Scissors':
-          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a win!`), 'win']
-        case 'Rock':
-          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a loss!`), 'loss']
-      }
-
-    case "Scissors":
-      switch (userChoice) {
-        case 'Scissors':
-          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a draw!`), 'draw']
-        case 'Rock':
-          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a win!`), 'win']
-        case 'Paper':
-          return [(`User: ${userChoice}\nComputer: ${computerChoice}\nIt's a loss!`), 'loss']
-      }
+  const result = {
+    Rock: {Rock: "draw", Paper: "loss", Scissors: "win"},
+    Paper: {Rock: "win", Paper: "draw", Scissors: "loss"},
+    Scissors: {Rock: "loss", Paper: "win", Scissors: "draw"}
   }
+
+  const outcome = result[computerChoice][userChoice]
+  const message = `User: ${userChoice}, Computer: ${computerChoice}. It's a ${outcome}!`
+
+  return [message, outcome]
 }
 
 function scoreDisplay(score, choice){
