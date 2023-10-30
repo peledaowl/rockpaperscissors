@@ -35,16 +35,20 @@ function scoreDisplay(score, choice){
   
   if (score[0] == 5){
     scoreResult.textContent = `User WON! User score: ${score[0]}, Computer score: ${score[1]}`
+    btnAll.forEach(btn => btn.disabled = true)
   } else if (score[1] == 5){
     scoreResult.textContent = `Computer WON! User score: ${score[0]}, Computer score: ${score[1]}`
+    btnAll.forEach(btn => btn.disabled = true)
   }
   container.appendChild(roundResult)
   container.appendChild(scoreResult)
 }
 
+
 const btnRock = document.querySelector('.btnRock')
 const btnPaper = document.querySelector('.btnPaper')
 const btnScissors = document.querySelector('.btnScissors')
+const btnAll = document.querySelectorAll('button')
 
 let userScore = 0
 let computerScore = 0
