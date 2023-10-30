@@ -46,86 +46,48 @@ function playRound(userChoice, computerChoice) {
   }
 }
 
+function scoreDisplay(score, choice){
+  const result = playRound(choice, getComputerChoice());
+  if (result[1] == 'win'){ score[0]++ }
+  else if (result[1] == 'loss'){ score[1]++ }
+
+  scoreResult.textContent = `User score: ${score[0]}, Computer score: ${score[1]}`
+  roundResult.textContent = result[0]
+  
+  if (score[0] == 5){
+    scoreResult.textContent = `User WON! User score: ${score[0]}, Computer score: ${score[1]}`
+  } else if (score[1] == 5){
+    scoreResult.textContent = `Computer WON! User score: ${score[0]}, Computer score: ${score[1]}`
+  }
+  container.appendChild(roundResult)
+  container.appendChild(scoreResult)
+}
+
 const btnRock = document.querySelector('.btnRock')
 const btnPaper = document.querySelector('.btnPaper')
 const btnScissors = document.querySelector('.btnScissors')
 
 let userScore = 0
 let computerScore = 0
+let scores = [userScore, computerScore]
 
 const container = document.querySelector('.container')
 const roundResult = document.createElement('p')
 const scoreResult = document.createElement('p')
 
 btnRock.addEventListener('click', () => {
-  const result = playRound('Rock', getComputerChoice());
-
-  if (result[1] == 'win'){ userScore++ }
-  else if (result[1] == 'loss'){ computerScore++ }
-
-  scoreResult.textContent = `User score: ${userScore}, Computer score: ${computerScore}`
-  roundResult.textContent = result[0]
-  container.appendChild(roundResult)
-  container.appendChild(scoreResult)
+  scoreDisplay(scores, 'Rock')
 });
 
 
 btnPaper.addEventListener('click', () => {
-  const result = playRound('Paper', getComputerChoice());
-
-  if (result[1] == 'win'){ userScore++ }
-  else if (result[1] == 'loss'){ computerScore++ }
-  scoreResult.textContent = `User score: ${userScore}, Computer score: ${computerScore}`
-  roundResult.textContent = result[0]
-  container.appendChild(roundResult)
-  container.appendChild(scoreResult)
+  scoreDisplay(scores, 'Paper')
 });
 
 
 btnScissors.addEventListener('click', () => {
-  const result = playRound('Scissors', getComputerChoice());
-
-  if (result[1] == 'win'){ userScore++ }
-  else if (result[1] == 'loss'){ computerScore++ }
-  
-
-  scoreResult.textContent = `User score: ${userScore}, Computer score: ${computerScore}`
-  roundResult.textContent = result[0]
-  container.appendChild(roundResult)
-  container.appendChild(scoreResult)
+  scoreDisplay(scores, 'Scissors')
 });
-
-
-
-/*
-function game(func) {
-  let userScore = 0
-  let computerScore = 0
-  for (let i = 0; i <= 4; i++) { // Repeating the playRound function five times
-    let funcCall = func() // Assign the result of the function to a variable
-    if (funcCall[1] == 'win') { // If the result of the function is a win,
-      userScore++; // Add to the user score,
-      console.log(funcCall[0]) // Print result of the round
-    } else if (funcCall[1] == 'draw') { // If the result of the function is a draw,
-      i--; // Subtract from the loop counter
-      console.log(funcCall[0]) // Print result of the round
-    } else if (funcCall[1] == 'loss') { // If the result of the function is a loss,
-      computerScore++; // Add to the computer score,
-      console.log(funcCall[0]) // Print result of the round
-    } else { // If the case was default (wrong input), 
-      console.log(funcCall) // print result of the function
-      i--; // Subtract from the loop counter
-    }
-  }
-  if (userScore > computerScore) { // Comparing user and computer score and printing results of the game
-    console.log(`The final score: \nUser: ${userScore}\nComputer: ${computerScore}\nYou won the game!`)
-  } else if (userScore < computerScore) {
-    console.log(`The final score: \nUser: ${userScore}\nComputer: ${computerScore}\nYou lost the game.`)
-  } else if (userScore == computerScore) {
-    console.log(`The final score: \nUser: ${userScore}\nComputer: ${computerScore}\nThe game is draw.`)
-  }
-}
-*/
 
 
 
